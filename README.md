@@ -10,7 +10,13 @@ This repo was created from [Slim Framework 3 skeleton application](https://githu
 2. Open Google Cloud Shell
 3. Clone this repo `git clone git@github.com:<YOUR_ACCOUNT>/simple-gcp-image-server.git`
 4. Move to the project `cd simple-gcp-image-server`
-5. Deploy it `gcloud app deploy [app.yml]`
+5. `composer install`
+6. Modify the config files
+    1. Rename `src/settings.php.example` to `src/settings.php`
+    2. Rename `phinx.yml.example` to `phinx.yml`
+    3. Edit the config files
+6. Run database migrations `vendor/bin/phinx migrate -e development`
+7. Deploy the service `gcloud app deploy [app.yml]`
 
 ## Usage
 
