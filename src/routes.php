@@ -2,5 +2,10 @@
 
 // Routes
 
-$app->get('/', function ($request, $response, $args) {
-});
+use google\appengine\api\cloud_storage\CloudStorageTools;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+
+use Controllers\UploadController;
+
+$app->post('/upload', UploadController::class . ':save');

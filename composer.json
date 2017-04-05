@@ -21,6 +21,7 @@
     },
     "autoload-dev": {
         "psr-4": {
+            "Controllers\\": "src/Controllers/",
             "Tests\\": "tests/"
         }
     },
