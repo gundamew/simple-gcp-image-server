@@ -1,26 +1,25 @@
-# Slim Framework 3 Skeleton Application
+# Simple GCP Image Server
 
-Use this skeleton application to quickly setup and start working on a new Slim Framework 3 application. This application uses the latest Slim 3 with the PHP-View template renderer. It also uses the Monolog logger.
+A simple image server based on Google Cloud Platform.
 
-This skeleton application was built for Composer. This makes setting up a new Slim Framework application quick and easy.
+This repo was created from [Slim Framework 3 skeleton application](https://github.com/slimphp/Slim-Skeleton) and for learning to use GCP services.
 
-## Install the Application
+## Installation
 
-Run this command from the directory in which you want to install your new Slim Framework application.
+1. Log in Google Cloud Platform
+2. Open Google Cloud Shell
+3. Clone this repo `git clone git@github.com:<YOUR_ACCOUNT>/simple-gcp-image-server.git`
+4. Move to the project `cd simple-gcp-image-server`
+5. Deploy it `gcloud app deploy [app.yml]`
 
-    php composer.phar create-project slim/slim-skeleton [my-app-name]
+## Usage
 
-Replace `[my-app-name]` with the desired directory name for your new application. You'll want to:
+Send `multipart/form-data` (the part name must be `upload-image`) request to `<YOUR_SERVICE_NAME>/upload`, and you will get response contain `serving_url` in JSON format.
 
-* Point your virtual host document root to your new application's `public/` directory.
-* Ensure `logs/` is web writeable.
+## Contributing
 
-To run the application in development, you can also run this command. 
+You can run the service with a [local development server](https://cloud.google.com/appengine/docs/standard/python/tools/using-local-server), or on GCP.
 
-	php composer.phar start
+## License
 
-Run this command to run the test suite
-
-	php composer.phar test
-
-That's it! Now go build something cool.
+WTFPL
