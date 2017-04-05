@@ -16,6 +16,18 @@ This repo was created from [Slim Framework 3 skeleton application](https://githu
 
 Send `multipart/form-data` (the part name must be `upload-image`) request to `<YOUR_SERVICE_NAME>/upload`, and you will get response contain `serving_url` in JSON format.
 
+For example (use [HTTPie](https://httpie.org/)):
+
+```shell
+# Request
+http -f POST 'http://localhost:8080/upload' upload-image@~/path/to/image-file
+
+# Response
+{
+    "serving_url": "http://localhost:8080/_ah/img/encoded_gs_file:YXBwX2RlZmF1bHRfYnVja2V0LzNkMjNmZGJlMWI1OTc2ZmQ0NTM0NjM2Yzc1MDdkZTI5MDllOWRiZTA="
+}
+```
+
 ## Contributing
 
 You can run the service with a [local development server](https://cloud.google.com/appengine/docs/standard/python/tools/using-local-server), or on GCP.
