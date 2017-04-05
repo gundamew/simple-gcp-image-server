@@ -4,12 +4,6 @@
 
 $container = $app->getContainer();
 
-// view renderer
-$container['renderer'] = function ($container) {
-    $settings = $container->get('settings')['renderer'];
-    return new Slim\Views\PhpRenderer($settings['template_path']);
-};
-
 // monolog
 $container['logger'] = function ($container) {
     $settings = $container->get('settings')['logger'];
