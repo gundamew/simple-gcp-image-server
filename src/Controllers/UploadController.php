@@ -25,7 +25,7 @@ class UploadController
             throw new \Exception(sprintf('%s at line %d: No file uploaded or invalid form name', static::class, __LINE__));
         }
 
-        $savedFileInfo = $this->saveFile($files['upload-image']);
+        $savedFileInfo = $this->saveImage($files['upload-image']);
 
         $sql = <<<SQL
 INSERT INTO images (
@@ -51,10 +51,10 @@ SQL;
         return $response->withStatus(200)->withJson(['serving_url' => $savedFileInfo['servingUrl']]);
     }
 
-    private function saveFile(UploadedFileInterface $newFile)
+    private function saveImage(UploadedFileInterface $newFile)
     {
         if (!$this->isImageType($newFile->getClientMediaType())) {
-            throw new \Exception(sprintf('%s at line %d: Only image file allowed', static::class, __LINE__));
+            throw new \Exception(sprintf('%s at line %d: Only image files allowed', static::class, __LINE__));
         }
 
         $objectName = sha1(file_get_contents($newFile->file));
