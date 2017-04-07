@@ -16,7 +16,8 @@ This repo was created from [Slim Framework 3 skeleton application](https://githu
     2. Rename `phinx.yml.example` to `phinx.yml`
     3. Edit the config files
 6. Run database migrations `vendor/bin/phinx migrate -e development`
-7. Deploy the service `gcloud app deploy [app.yml]`
+7. Run database seeders `vendor/bin/phinx seed:run -e development`
+8. Deploy the service `gcloud app deploy [app.yml]`
 
 ## Usage
 
