@@ -19,9 +19,9 @@ $container['logger'] = function ($container) {
 $container['database'] = function ($container) {
     $settings = $container->get('settings')['database'];
     $dsn = str_replace(
-        ['{HOST}', '{NAME}', '{CHARSET}'],
-        [$settings['host'], $settings['name'], $settings['charset']],
-        'mysql:host={HOST};dbname={NAME};charset={CHARSET}'
+        ['{SOCKET}', '{NAME}', '{CHARSET}'],
+        [$settings['socket'], $settings['name'], $settings['charset']],
+        'mysql:unix_socket={SOCKET};dbname={NAME};charset={CHARSET}'
     );
     $options = [
         PDO::ATTR_CASE => PDO::CASE_NATURAL,

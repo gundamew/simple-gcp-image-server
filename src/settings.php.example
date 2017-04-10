@@ -15,7 +15,7 @@ return [
 
         // Database settings
         'database' => [
-            'host' => '127.0.0.1',
+            'socket' => '/cloudsql/project:region:instance',
             'name' => '',
             'charset' => 'utf8mb4',
             'user' => '',
