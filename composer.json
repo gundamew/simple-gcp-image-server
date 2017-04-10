@@ -1,14 +1,14 @@
 {
-    "name": "slim/slim-skeleton",
-    "description": "A Slim Framework skeleton application for rapid development",
-    "keywords": ["microframework", "rest", "router", "psr7"],
-    "homepage": "http://github.com/slimphp/Slim-Skeleton",
-    "license": "MIT",
+    "name": "gundamew/simple-gcp-image-server",
+    "description": "A simple image server based on Google Cloud Platform for learning to use GCP services",
+    "keywords": ["gcp", "rest", "image", "learning"],
+    "homepage": "https://github.com/gundamew/simple-gcp-image-server",
+    "license": "WTFPL",
     "authors": [
         {
-            "name": "Josh Lockhart",
-            "email": "info@joshlockhart.com",
-            "homepage": "http://www.joshlockhart.com/"
+            "name": "Bing-Sheng Chen",
+            "email": "bschen@panmedia.asia",
+            "homepage": "http://bschen.tw/"
         }
     ],
     "require": {
@@ -25,9 +25,8 @@
             "Tests\\": "tests/"
         }
     },
-	"scripts": {
+    "scripts": {
         "start": "php -S 0.0.0.0:8080 -t public public/index.php",
         "test": "phpunit"
-	}
-
+    }
 }
