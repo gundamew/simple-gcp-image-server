@@ -4,17 +4,6 @@
 
 $container = $app->getContainer();
 
-// monolog
-$container['logger'] = function ($container) {
-    $settings = $container->get('settings')['logger'];
-    Monolog\Logger::setTimezone(new \DateTimeZone($settings['timezone']));
-    $formatter = new Monolog\Formatter\LineFormatter;
-    $formatter->ignoreEmptyContextAndExtra();
-    $logger = new Monolog\Logger($settings['name']);
-    $logger->pushHandler((new Monolog\Handler\StreamHandler($settings['path'], $settings['level']))->setFormatter($formatter));
-    return $logger;
-};
-
 // PDO
 $container['database'] = function ($container) {
     $settings = $container->get('settings')['database'];
@@ -35,9 +24,8 @@ $container['database'] = function ($container) {
 };
 
 // default error handler
-$container['errorHandler'] = function ($container) {
-    return function ($request, $response, $exception) use ($container) {
-        $container->logger->error($exception->getMessage());
+$container['errorHandler'] = function () {
+    return function ($request, $response, $exception) {
         return $response->withJson(
             ['message' => $exception->getMessage()],
             $response->getStatusCode(),
@@ -47,15 +35,15 @@ $container['errorHandler'] = function ($container) {
 };
 
 // HTTP 404 "Not Found" error handler
-$container['notFoundHandler'] = function ($container) {
-    return function ($request, $response) use ($container) {
+$container['notFoundHandler'] = function () {
+    return function ($request, $response) {
         return $response->withStatus(404)->withJson(['message' => 'Page not found']);
     };
 };
 
 // HTTP 405 "Not Allowed" error handler
-$container['notAllowedHandler'] = function ($container) {
-    return function ($request, $response, $methods) use ($container) {
+$container['notAllowedHandler'] = function () {
+    return function ($request, $response, $methods) {
         return $response->withStatus(405)->withHeader('Allow', implode(', ', $methods))->withJson(['message' => 'Method not allowed']);
     };
 };

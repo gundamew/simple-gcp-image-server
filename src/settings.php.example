@@ -5,14 +5,6 @@ return [
         'displayErrorDetails' => true, // set to false in production
         'addContentLengthHeader' => false, // Allow the web server to send the content-length header
 
-        // Monolog settings
-        'logger' => [
-            'name' => 'simple-gcp-image-server',
-            'path' => __DIR__ . '/../logs/' . date('Ymd') . '.log',
-            'level' => \Monolog\Logger::DEBUG,
-            'timezone' => 'Asia/Taipei',
-        ],
-
         // Database settings
         'database' => [
             'socket' => '/cloudsql/project:region:instance',
