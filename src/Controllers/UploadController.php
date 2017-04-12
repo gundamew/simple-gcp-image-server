@@ -53,10 +53,6 @@ SQL;
 
     private function saveImage(UploadedFileInterface $newFile)
     {
-        if (!$this->isImageType($newFile->getClientMediaType())) {
-            throw new \Exception(sprintf('%s at line %d: Only image files allowed', static::class, __LINE__));
-        }
-
         $objectName = sha1(file_get_contents($newFile->file));
         $gsFile = 'gs://' . CloudStorageTools::getDefaultGoogleStorageBucketName() . '/' . $objectName;
 
@@ -67,10 +63,5 @@ SQL;
             'objectName' => $objectName,
             'servingUrl' => CloudStorageTools::getImageServingUrl($gsFile, ['secure_url' => true]),
         ];
-    }
-
-    private function isImageType($mimeType)
-    {
-        return in_array($mimeType, ['image/gif', 'image/jpeg', 'image/png',], true);
     }
 }
