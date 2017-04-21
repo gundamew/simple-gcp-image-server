@@ -30,9 +30,16 @@ http -f POST 'http://localhost:8080/upload' upload-image@~/path/to/image-file
 }
 ```
 
+## Todo
+
+1. Valid/Limit requests or anyone can upload any file to server
+2. Unit tests
+
 ## Contributing
 
 You can run the service with a [local development server](https://cloud.google.com/appengine/docs/standard/python/tools/using-local-server), or on GCP.
+
+See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## License
 
