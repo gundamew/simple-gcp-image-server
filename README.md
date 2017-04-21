@@ -1,6 +1,6 @@
 # Simple GCP Image Server
 
-A simple image server based on Google Cloud Platform.
+A simple image server based on Google Cloud Platform. It saving files with [Cloud Storage](https://cloud.google.com/storage/), serving images with [App Engine](https://cloud.google.com/appengine/), and record the relationships of files and serving URLs with [Cloud SQL](https://cloud.google.com/sql/).
 
 This repo was created from [Slim Framework 3 skeleton application](https://github.com/slimphp/Slim-Skeleton) and for learning to use GCP services.
 
@@ -10,15 +10,13 @@ This repo was created from [Slim Framework 3 skeleton application](https://githu
 2. Open Google Cloud Shell
 3. Clone this repo `git clone git@github.com:<YOUR_ACCOUNT>/simple-gcp-image-server.git`
 4. Move to the project `cd simple-gcp-image-server`
-5. `composer install`
-6. Modify the config files
-    1. Rename `src/settings.php.example` to `src/settings.php`
-    2. Edit the config files
+5. `composer install` (You have to install composer first)
+6. Rename `src/settings.php.example` to `src/settings.php` and edit it
 7. Deploy the service `gcloud app deploy [app.yml]`
 
 ## Usage
 
-Send `multipart/form-data` (the part name must be `upload-image`) request to `<YOUR_SERVICE_NAME>/upload`, and you will get response contain `serving_url` in JSON format.
+Send `multipart/form-data` (the part name must be `upload-image`) request to `<YOUR_SERVICE_NAME>/upload`, and you will get response contains `serving_url` in JSON format.
 
 For example (use [HTTPie](https://httpie.org/)):
 
