@@ -31,9 +31,9 @@ class UploadController
 
         $sql = <<<SQL
 INSERT INTO images (
-    name, object_name, public_link, serving_url, upload_time
+    name, bucket, object_name, public_link, serving_url, upload_time
 ) VALUES (
-    :name, :object_name, :public_link, :serving_url, :upload_time
+    :name, :bucket, :object_name, :public_link, :serving_url, :upload_time
 )
 SQL;
 
@@ -41,6 +41,7 @@ SQL;
 
         $query = $this->container->database->prepare($sql);
         $query->bindParam(':name', $savedFileInfo['name'], \PDO::PARAM_STR);
+        $query->bindParam(':bucket', $savedFileInfo['bucket'], \PDO::PARAM_STR);
         $query->bindParam(':object_name', $savedFileInfo['objectName'], \PDO::PARAM_STR);
         $query->bindParam(':public_link', $savedFileInfo['publicLink'], \PDO::PARAM_STR);
         $query->bindParam(':serving_url', $savedFileInfo['servingUrl'], \PDO::PARAM_STR);
@@ -71,6 +72,7 @@ SQL;
 
         return [
             'name' => $newFile->getClientFilename(),
+            'bucket' => $bucketName,
             'objectName' => $objectName,
             'publicLink' => 'https://storage.googleapis.com/' . $bucketName . '/' . $objectName,
             'servingUrl' => CloudStorageTools::getImageServingUrl($gsFile, ['secure_url' => true]),
