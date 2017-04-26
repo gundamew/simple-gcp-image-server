@@ -2,8 +2,12 @@
 
 return [
     'settings' => [
-        'displayErrorDetails' => true, // set to false in production
-        'addContentLengthHeader' => false, // Allow the web server to send the content-length header
+
+        // set to false in production
+        'displayErrorDetails' => true,
+
+        // Allow the web server to send the content-length header
+        'addContentLengthHeader' => false,
 
         // Database settings
         'database' => [
@@ -12,6 +16,12 @@ return [
             'charset' => 'utf8mb4',
             'user' => '',
             'password' => '',
+        ],
+
+        // Available buckets
+        'availableBuckets' => [
+            'default' => 'panmedia-images.appspot.com',
+            'panread' => 'panread-images',
         ],
     ],
 ];
