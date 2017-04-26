@@ -23,19 +23,25 @@ This repo was created from [Slim Framework 3 skeleton application](https://githu
 
 ## Usage
 
-Send `multipart/form-data` (the part name must be `upload-image`) request to `<YOUR_SERVICE_NAME>/upload`, and you will get response contains `serving_url` in JSON format.
+Send `multipart/form-data` (the part name must be `upload-image`) request to `<YOUR_SERVICE_NAME>/upload/<BUCKET>`, and you will get response contains `public_link` and `serving_url` in JSON format, like this:
 
-For example (use [HTTPie](https://httpie.org/)):
-
-```shell
-# Request
-http -f POST 'http://example.com/upload/default' upload-image@~/path/to/image-file
-
-# Response
+```json
 {
-    "public_link":"https://storage.googleapis.com/default-bucket/3d23fdbe1b5976fd4534636c7507de2909e9dbe0",
+    "public_link": "https://storage.googleapis.com/default-bucket/3d23fdbe1b5976fd4534636c7507de2909e9dbe0",
     "serving_url": "https://lh3.googleusercontent.com/YXBwX2RlZmF1bHRfYnVja2V0LzNkMjNmZGJlMWI1OTc2ZmQ0NTM0NjM2Yzc1MDdkZTI5MDllOWRiZTA="
 }
+```
+
+### HTTPie
+
+```shell
+http -f POST 'http://example.com/upload/default' upload-image@/path/to/image-file
+```
+
+### cURL
+
+```shell
+curl -X POST --url http://example.com/upload/default -H 'content-type: multipart/form-data' -F upload-image=@/path/to/image-file
 ```
 
 ## Todo
