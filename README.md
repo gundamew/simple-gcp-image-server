@@ -12,7 +12,12 @@ This repo was created from [Slim Framework 3 skeleton application](https://githu
 4. Move to the project `cd simple-gcp-image-server`
 5. `composer install` (You have to install composer first)
 6. Rename `src/settings.php.example` to `src/settings.php` and edit it
-7. Create database table `mysql < database/images.sql`
+7. Create database table
+    1. Open Cloud SQL page
+    2. Create database
+    3. Add your local IP to whitelist
+    4. Connect to Cloud SQL from local app (like Sequel Pro) using SSL
+    5. Use `database/images.sql` to create table
 8. Deploy the service `gcloud app deploy [app.yml]`
 
 ## Usage
