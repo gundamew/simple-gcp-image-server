@@ -42,6 +42,7 @@ SQL;
         $query = $this->container->database->prepare($sql);
         $query->bindParam(':name', $savedFileInfo['name'], \PDO::PARAM_STR);
         $query->bindParam(':object_name', $savedFileInfo['objectName'], \PDO::PARAM_STR);
+        $query->bindParam(':public_link', $savedFileInfo['publicLink'], \PDO::PARAM_STR);
         $query->bindParam(':serving_url', $savedFileInfo['servingUrl'], \PDO::PARAM_STR);
         $query->bindParam(':upload_time', $uploadTime, \PDO::PARAM_STR);
         $isSaved = $query->execute();
@@ -50,7 +51,10 @@ SQL;
             throw new \Exception(sprintf('%s at line %d: Failed to write to database', static::class, __LINE__));
         }
 
-        return $response->withStatus(200)->withJson(['serving_url' => $savedFileInfo['servingUrl']]);
+        return $response->withStatus(200)->withJson([
+            'public_link' => $savedFileInfo['publicLink'],
+            'serving_url' => $savedFileInfo['servingUrl'],
+        ]);
     }
 
     private function saveImage(UploadedFileInterface $newFile, $bucketName = '')
@@ -68,6 +72,7 @@ SQL;
         return [
             'name' => $newFile->getClientFilename(),
             'objectName' => $objectName,
+            'publicLink' => 'https://storage.googleapis.com/' . $bucketName . '/' . $objectName,
             'servingUrl' => CloudStorageTools::getImageServingUrl($gsFile, ['secure_url' => true]),
         ];
     }
