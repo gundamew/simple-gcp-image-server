@@ -20,8 +20,8 @@ return [
 
         // Available buckets
         'availableBuckets' => [
-            'default' => 'panmedia-images.appspot.com',
-            'panread' => 'panread-images',
+            'default' => 'default-bucket',
+            'foo' => 'bar',
         ],
     ],
 ];
