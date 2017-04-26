@@ -31,9 +31,9 @@ class UploadController
 
         $sql = <<<SQL
 INSERT INTO images (
-    name, object_name, serving_url, upload_time
+    name, object_name, public_link, serving_url, upload_time
 ) VALUES (
-    :name, :object_name, :serving_url, :upload_time
+    :name, :object_name, :public_link, :serving_url, :upload_time
 )
 SQL;
 

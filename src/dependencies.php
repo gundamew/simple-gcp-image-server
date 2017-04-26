@@ -49,6 +49,6 @@ $container['notAllowedHandler'] = function () {
 };
 
 // Available buckets
-$container['availableBuckets'] = function () {
+$container['availableBuckets'] = function ($container) {
     return $container->get('settings')['availableBuckets'];
 };
