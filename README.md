@@ -12,10 +12,11 @@ This repo was created from [Slim Framework 3 skeleton application](https://githu
 4. Move to the project `cd simple-gcp-image-server`
 5. `composer install` (You have to install composer first)
 6. Rename `src/settings.php.example` to `src/settings.php` and edit it
+    1. :warning: The `availableBuckets` setting would affect the `handlers` in `app.yml`
 7. Create database table
     1. Open Cloud SQL page
     2. Create database
-    3. Add your local IP to whitelist
+    3. Only allow SSL connection and add your local IP to whitelist
     4. Connect to Cloud SQL from local app (like Sequel Pro) using SSL
     5. Use `database/images.sql` to create table
 8. Deploy the service `gcloud app deploy [app.yml]`
@@ -28,11 +29,12 @@ For example (use [HTTPie](https://httpie.org/)):
 
 ```shell
 # Request
-http -f POST 'http://localhost:8080/upload' upload-image@~/path/to/image-file
+http -f POST 'http://example.com/upload/default' upload-image@~/path/to/image-file
 
 # Response
 {
-    "serving_url": "http://localhost:8080/_ah/img/encoded_gs_file:YXBwX2RlZmF1bHRfYnVja2V0LzNkMjNmZGJlMWI1OTc2ZmQ0NTM0NjM2Yzc1MDdkZTI5MDllOWRiZTA="
+    "public_link":"https://storage.googleapis.com/default-bucket/3d23fdbe1b5976fd4534636c7507de2909e9dbe0",
+    "serving_url": "https://lh3.googleusercontent.com/YXBwX2RlZmF1bHRfYnVja2V0LzNkMjNmZGJlMWI1OTc2ZmQ0NTM0NjM2Yzc1MDdkZTI5MDllOWRiZTA="
 }
 ```
 
