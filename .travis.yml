@@ -1,0 +1,15 @@
+language: php
+
+php:
+    - 5.6
+    - 5.5
+
+install:
+    - composer install
+
+notifications:
+    email:
+        recipients:
+            - bschen@panmedia.asia
+        on_success: always
+        on_failure: always
