@@ -25,8 +25,9 @@
         }
     },
     "scripts": {
-        "start": "php -S 0.0.0.0:8080 -t public public/index.php",
-        "test": "phpunit"
+        "post-install-cmd": [
+            "@php -r \"file_exists('src/settings.php') || copy('src/settings.php.example', 'src/settings.php');\""
+        ]
     },
     "config": {
         "optimize-autoloader": true,
