@@ -1,27 +1,21 @@
 # Simple GCP Image Server
 
-A simple image server based on Google Cloud Platform. It saving files with [Cloud Storage](https://cloud.google.com/storage/), serving images with [App Engine](https://cloud.google.com/appengine/), and record the relationships of files and serving URLs with [Cloud SQL](https://cloud.google.com/sql/).
+A simple image server run in App Engine using the [standard environment](https://cloud.google.com/appengine/docs/php/).
+
+It saving files with [Cloud Storage](https://cloud.google.com/storage/), serving images with [App Engine](https://cloud.google.com/appengine/), and record the relationships of files and serving URLs with [Cloud SQL](https://cloud.google.com/sql/).
 
 This repo was created from [Slim Framework 3 skeleton application](https://github.com/slimphp/Slim-Skeleton) and for learning to use GCP services.
 
-## Installation
+## Install
 
-1. Log in Google Cloud Platform
-2. Open Google Cloud Shell
-3. Clone this repo `git clone git@github.com:<YOUR_ACCOUNT>/simple-gcp-image-server.git`
-4. Move to the project `cd simple-gcp-image-server`
-5. `composer install` (You have to install composer first)
-6. Rename `src/settings.php.example` to `src/settings.php` and edit it
-    1. :warning: The `availableBuckets` setting would affect the `handlers` in `app.yaml`
-7. Create database table
-    1. Open Cloud SQL page
-    2. Create database
-    3. Only allow SSL connection and add your local IP to whitelist
-    4. Connect to Cloud SQL from local app (like Sequel Pro) using SSL
-    5. Use `database/images.sql` to create table
-8. Deploy the service `gcloud app deploy [app.yaml]`
+1. Log in Google Cloud Platform and open Google Cloud Shell
+2. Clone this repo
+3. Install packages `composer install` (You have to install Composer by hand)
+4. Edit `src/settings.php`
+5. Use `database/images.sql` to create table in Cloud SQL
+6. Deploy the service `gcloud app deploy [app.yaml]`
 
-## Usage
+## How to Use
 
 Send `multipart/form-data` (the part name must be `upload-image`) request to `<YOUR_SERVICE_NAME>/upload/<BUCKET>`, and you will get response contains `public_link` and `serving_url` in JSON format, like this:
 
