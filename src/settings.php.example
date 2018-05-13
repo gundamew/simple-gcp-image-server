@@ -17,11 +17,5 @@ return [
             'user' => '',
             'password' => '',
         ],
-
-        // Available buckets
-        'availableBuckets' => [
-            'default' => 'default-bucket',
-            'foo' => 'bar',
-        ],
     ],
 ];

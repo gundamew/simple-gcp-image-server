@@ -25,9 +25,7 @@ class UploadController
             throw new \Exception(sprintf('%s at line %d: No file uploaded or invalid form name', static::class, __LINE__));
         }
 
-        $bucketName = $this->container['availableBuckets'][$args['bucket']];
-
-        $savedFileInfo = $this->saveImage($files['upload-image'], $bucketName);
+        $savedFileInfo = $this->saveImage($files['upload-image']);
 
         $sql = <<<SQL
 INSERT INTO images (
@@ -58,12 +56,9 @@ SQL;
         ]);
     }
 
-    private function saveImage(UploadedFileInterface $newFile, $bucketName = '')
+    private function saveImage(UploadedFileInterface $newFile)
     {
-        if ($bucketName === '') {
-            $bucketName = CloudStorageTools::getDefaultGoogleStorageBucketName();
-        }
-
+        $bucketName = CloudStorageTools::getDefaultGoogleStorageBucketName();
         $objectName = sha1(file_get_contents($newFile->file));
 
         $gsFile = 'gs://' . $bucketName . '/' . $objectName;

@@ -17,7 +17,7 @@ This repo was created from [Slim Framework 3 skeleton application](https://githu
 
 ## How to Use
 
-Send `multipart/form-data` (the part name must be `upload-image`) request to `<YOUR_SERVICE_NAME>/upload/<BUCKET>`, and you will get response contains `public_link` and `serving_url` in JSON format, like this:
+Send `multipart/form-data` (the part name must be `upload-image`) request to `<YOUR_SERVICE_NAME>/upload`, and you will get response contains `public_link` and `serving_url` in JSON format, like this:
 
 ```json
 {
@@ -29,13 +29,13 @@ Send `multipart/form-data` (the part name must be `upload-image`) request to `<Y
 ### HTTPie
 
 ```shell
-http -f POST 'http://example.com/upload/default' upload-image@/path/to/image-file
+http -f POST 'http://example.com/upload' upload-image@/path/to/image-file
 ```
 
 ### cURL
 
 ```shell
-curl -X POST --url http://example.com/upload/default -H 'content-type: multipart/form-data' -F upload-image=@/path/to/image-file
+curl -X POST --url http://example.com/upload -H 'content-type: multipart/form-data' -F upload-image=@/path/to/image-file
 ```
 
 ## Todo

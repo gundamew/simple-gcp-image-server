@@ -47,8 +47,3 @@ $container['notAllowedHandler'] = function () {
         return $response->withStatus(405)->withHeader('Allow', implode(', ', $methods))->withJson(['message' => 'Method not allowed']);
     };
 };
-
-// Available buckets
-$container['availableBuckets'] = function ($container) {
-    return $container->get('settings')['availableBuckets'];
-};
