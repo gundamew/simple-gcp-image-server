@@ -12,7 +12,8 @@ This repo was created from [Slim Framework 3 skeleton application](https://githu
 2. Clone this repo
 3. Install packages `composer install` (You have to install Composer by hand)
 4. Edit `src/settings.php`
-5. Use `database/images.sql` to create table in Cloud SQL
+5. Run migrations locally via [Cloud SQL Proxy](https://cloud.google.com/sql/docs/mysql/connect-admin-proxy)
+    * `phinx migrate --dry-run` will receive error message which is an known issue. Just run it w/o `--dry-run` option
 6. Deploy the service `gcloud app deploy [app.yaml]`
 
 ## How to Use
