@@ -8,4 +8,4 @@ use Psr\Http\Message\ServerRequestInterface;
 
 use Controllers\UploadController;
 
-$app->post('/upload/{bucket:\w+}', UploadController::class . ':save');
+$app->post('/upload', UploadController::class . ':save');
