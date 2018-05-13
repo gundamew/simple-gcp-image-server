@@ -20,7 +20,7 @@ class ImagesSeeder extends AbstractSeed
                 'object_name' => $objectName,
                 'public_link' => 'https://storage.googleapis.com/' . $bucketName . '/' . $objectName,
                 'serving_url' => 'https://lh3.googleusercontent.com/' . base64_encode($faker->sha256()),
-                'upload_time' => $faker->dateTimeThisMonth('now', 'Asia/Taipei'),
+                'upload_time' => $faker->dateTimeThisMonth('now', 'Asia/Taipei')->format('Y-m-d H:i:s'),
             ];
         }
 
