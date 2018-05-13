@@ -17,7 +17,7 @@ class UploadController
         $this->container = $container;
     }
 
-    public function save(ServerRequestInterface $request, ResponseInterface $response, array $args)
+    public function save(ServerRequestInterface $request, ResponseInterface $response)
     {
         $files = $request->getUploadedFiles();
 
