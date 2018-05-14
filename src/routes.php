@@ -26,7 +26,7 @@ $app->post('/upload', function (ServerRequestInterface $request, ResponseInterfa
         'bucketName' => $bucket,
         'objectName' => $object,
         'publicUrl' => $handler->getPublicUrl($gsFilename),
-        'servingUrl' => $handler->getImageServingUrl($gsFilename),
+        'servingUrl' => $handler->getImageServingUrl($gsFilename, []),
     ];
 
     $handler->save($this->database, $info);
