@@ -16,9 +16,9 @@ class ImagesSeeder extends AbstractSeed
 
             $data[] = [
                 'name' => $faker->userName(),
-                'bucket' => $bucketName,
+                'bucket_name' => $bucketName,
                 'object_name' => $objectName,
-                'public_link' => 'https://storage.googleapis.com/' . $bucketName . '/' . $objectName,
+                'public_URL' => 'https://storage.googleapis.com/' . $bucketName . '/' . $objectName,
                 'serving_url' => 'https://lh3.googleusercontent.com/' . base64_encode($faker->sha256()),
                 'upload_time' => $faker->dateTimeThisMonth('now', 'Asia/Taipei')->format('Y-m-d H:i:s'),
             ];

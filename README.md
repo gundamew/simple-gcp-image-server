@@ -22,7 +22,7 @@ Send `multipart/form-data` (the part name must be `upload-image`) request to `<Y
 
 ```json
 {
-    "public_link": "https://storage.googleapis.com/default-bucket/3d23fdbe1b5976fd4534636c7507de2909e9dbe0",
+    "public_url": "https://storage.googleapis.com/default-bucket/3d23fdbe1b5976fd4534636c7507de2909e9dbe0",
     "serving_url": "https://lh3.googleusercontent.com/YXBwX2RlZmF1bHRfYnVja2V0LzNkMjNmZGJlMWI1OTc2ZmQ0NTM0NjM2Yzc1MDdkZTI5MDllOWRiZTA="
 }
 ```
