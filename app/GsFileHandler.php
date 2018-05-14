@@ -21,7 +21,7 @@ class GsFileHandler extends AbstractGsFileHandler
         return CloudStorageTools::getFilename($bucketName, $objectName);
     }
 
-    public function getImageServingUrl($gsFilename, array $options)
+    public function getImageServingUrl($gsFilename, $options = [])
     {
         if (!array_key_exists('secure_url', $options)) {
             $options = array_merge($options, ['secure_url' => true]);
