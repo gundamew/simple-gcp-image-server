@@ -44,7 +44,7 @@ SQL;
         $query->bindParam(':object_name', $info['objectName'], \PDO::PARAM_STR);
         $query->bindParam(':public_url', $info['publicUrl'], \PDO::PARAM_STR);
         $query->bindParam(':serving_url', $info['servingUrl'], \PDO::PARAM_STR);
-        $query->bindParam(':upload_time', (new \DateTime('now', new \DateTimeZone('Asia/Taipei')))->format(\DateTime::ATOM), \PDO::PARAM_STR);
+        $query->bindParam(':upload_time', (new \DateTime('now', new \DateTimeZone('Asia/Taipei')))->format('Y-m-d H:i:s'), \PDO::PARAM_STR);
 
         $isSaved = $query->execute();
 
